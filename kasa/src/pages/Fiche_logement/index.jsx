@@ -4,6 +4,12 @@ import Star from '../../assets/rate.svg'
 import Chevron from '../../assets/chevron.svg'
 import { useParams } from 'react-router-dom'
 
+// function openCloseFiche() {
+//     let chevronDescription = document.querySelector('.ficheLogement_bottom_description_top_chevron')
+
+    
+// }
+
 
 function FicheLogement() {
     const { id } = useParams()
@@ -36,7 +42,7 @@ function FicheLogement() {
                 <div className="ficheLogement_bottom_description">
                     <div className='ficheLogement_bottom_description_top'>
                         <p>Description</p>
-                        <img src={Chevron} alt="" />
+                        <img className='ficheLogement_bottom_description_top_chevron' src={Chevron} alt="" />
                     </div>
                     <div className="ficheLogement_bottom_description_text">
                         <p>{logementFinal[0].description}</p>

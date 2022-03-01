@@ -4,9 +4,9 @@ const StyledGlobalStyle = createGlobalStyle`
     * {
         font-family: 'Montserrat', Helvetica, sans-serif;
     }
+
     body {
-        margin: auto;
-        width: 90%;
+        margin: 0;
     }
 `
 

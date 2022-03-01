@@ -7,6 +7,7 @@ import About from './pages/A_propos';
 import Error from './components/Error';
 import FicheLogement from './pages/Fiche_logement';
 import GlobalStyle from './utils/style/GlobalStyle'
+import Footer from './components/Footer';
 
 
 
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Route path='/ficheLogement/:id' element={<FicheLogement />}/>
         <Route path="*" element={<Error />} />
       </Routes>
+      <Footer />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
