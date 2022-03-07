@@ -2,6 +2,7 @@ import './styles.scss'
 import logements from '../../data/logements.json'
 import Star from '../../assets/rate.svg'
 import Chevron from '../../assets/chevron.svg'
+import Chevron_down from '../../assets/chevron-down.svg'
 import ChevronLeft from '../../assets/chevron-left.svg'
 import ChevronRight from '../../assets/chevron-right.svg'
 import { useParams } from 'react-router-dom'
@@ -80,7 +81,7 @@ function FicheLogement() {
                 <div className="ficheLogement_bottom_description">
                     <div className='ficheLogement_bottom_description_title'>
                         <p>Description</p>
-                        <img className='ficheLogement_bottom_description_title_chevron' onClick={() => menuOpenCloseDescription(openCloseDescription)} src={Chevron} alt="" />
+                        {openCloseDescription?<img className='ficheLogement_bottom_description_title_chevron' onClick={() => menuOpenCloseDescription(openCloseDescription)} src={Chevron} alt="" />:<img className='ficheLogement_bottom_description_title_chevron' onClick={() => menuOpenCloseDescription(openCloseDescription)} src={Chevron_down} alt="" />}
                     </div>
                     {openCloseDescription?<div className="ficheLogement_bottom_description_text">
                         <p>{logementFinal[0].description}</p>
@@ -90,7 +91,7 @@ function FicheLogement() {
                 <div className="ficheLogement_bottom_equipements">
                     <div className='ficheLogement_bottom_equipements_title'>
                         <p>Equipements</p>
-                        <img className='ficheLogement_bottom_equipements_title_chevron' onClick={() => menuOpenCloseEquipements(openCloseEquipements)} src={Chevron} alt="" />
+                        {openCloseEquipements?<img className='ficheLogement_bottom_equipements_title_chevron' onClick={() => menuOpenCloseEquipements(openCloseEquipements)} src={Chevron} alt="" />:<img className='ficheLogement_bottom_equipements_title_chevron' onClick={() => menuOpenCloseEquipements(openCloseEquipements)} src={Chevron_down} alt="" />}
                     </div>
                     {openCloseEquipements?<div className="ficheLogement_bottom_equipements_text">
                         {logementFinal[0].equipments.map(equipment => <p>{equipment}</p>)}
