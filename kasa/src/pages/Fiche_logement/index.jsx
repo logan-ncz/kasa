@@ -1,6 +1,10 @@
 import './styles.scss'
 import logements from '../../data/logements.json'
-import Star from '../../assets/rate.svg'
+import Rate1 from '../../assets/rate1.svg'
+import Rate2 from '../../assets/rate2.svg'
+import Rate3 from '../../assets/rate3.svg'
+import Rate4 from '../../assets/rate4.svg'
+import Rate5 from '../../assets/rate5.svg'
 import Chevron from '../../assets/chevron.svg'
 import Chevron_down from '../../assets/chevron-down.svg'
 import ChevronLeft from '../../assets/chevron-left.svg'
@@ -74,7 +78,14 @@ function FicheLogement() {
                         <p className='ficheLogement_host_name'>{logementFinal[0].host.name}</p>
                         <img className='ficheLogement_host_picture' src={logementFinal[0].host.picture} alt='' />
                     </div>
-                    <img className='ficheLogement_host_rating' src={Star} alt='' />
+                    <div>
+                        {logementFinal[0].rating === "1"?<img className='ficheLogement_host_rating' src={Rate1} alt='' />:null}
+                        {logementFinal[0].rating === "2"?<img className='ficheLogement_host_rating' src={Rate2} alt='' />:null}
+                        {logementFinal[0].rating === "3"?<img className='ficheLogement_host_rating' src={Rate3} alt='' />:null}
+                        {logementFinal[0].rating === "4"?<img className='ficheLogement_host_rating' src={Rate4} alt='' />:null}
+                        {logementFinal[0].rating === "5"?<img className='ficheLogement_host_rating' src={Rate5} alt='' />:null}
+                    </div>
+                    
                 </div>
             </div>
             <div className="ficheLogement_bottom">
@@ -94,7 +105,7 @@ function FicheLogement() {
                         {openCloseEquipements?<img className='ficheLogement_bottom_equipements_title_chevron' onClick={() => menuOpenCloseEquipements(openCloseEquipements)} src={Chevron} alt="" />:<img className='ficheLogement_bottom_equipements_title_chevron' onClick={() => menuOpenCloseEquipements(openCloseEquipements)} src={Chevron_down} alt="" />}
                     </div>
                     {openCloseEquipements?<div className="ficheLogement_bottom_equipements_text">
-                        {logementFinal[0].equipments.map(equipment => <p>{equipment}</p>)}
+                        {logementFinal[0].equipments.map(equipment => <p key={equipment}>{equipment}</p>)}
                     </div>:null}
                     
                 </div>
