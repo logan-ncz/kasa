@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    font-weight: 500;
 
     .error404 {
         color: #FF6060;
@@ -17,8 +18,27 @@
 
     .errorLink {
         color: #FF6060;
-        position: absolute;
-        bottom: 10%;
         font-size: 18px;
+        margin: 6em 0 5em 0;
+    }
+}
+
+@media (max-width: 415px) {
+    .error {
+        .error404 {
+            font-size: 96px;
+            margin-top: 1.5em;
+        }
+
+        .errorText {
+            font-size: 18px;
+            margin: 0 2em;
+            text-align: center;
+        }
+
+        .errorLink {
+            font-size: 14px;
+            margin: 6em 0 10em 0;
+        }
     }
 }

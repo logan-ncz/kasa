@@ -2,24 +2,62 @@ import './styles.scss'
 import logements from '../../data/logements.json'
 import Star from '../../assets/rate.svg'
 import Chevron from '../../assets/chevron.svg'
+import ChevronLeft from '../../assets/chevron-left.svg'
+import ChevronRight from '../../assets/chevron-right.svg'
 import { useParams } from 'react-router-dom'
-
-// function openCloseFiche() {
-//     let chevronDescription = document.querySelector('.ficheLogement_bottom_description_top_chevron')
-
-    
-// }
+import { useState } from 'react'
 
 
 function FicheLogement() {
+
     const { id } = useParams()
 
     const logementFinal = !id ? logements : logements.filter(logement => logement.id === id);
 
+    const images = logementFinal[0].pictures
+
+    const [ imagesIndex , ChangeIndex ] = useState(0);
+
+    const [ openCloseDescription , setOpenCloseDescription ] = useState(true);
+
+    const [ openCloseEquipements , setOpenCloseEquipements ] = useState(true);
+
+    const changeImage = function(indexFunc){
+        console.log(images);
+        if(indexFunc === -1){
+            indexFunc = images.length - 1
+        } else if (indexFunc === images.length){
+            indexFunc = 0
+        }
+        ChangeIndex(indexFunc)
+    }
+
+    const menuOpenCloseDescription = function(value){
+        if(value === true){
+            value = false
+        } else if(value === false){
+            value = true
+        }
+        setOpenCloseDescription(value)
+    }
+
+    const menuOpenCloseEquipements = function(value){
+        if(value === true){
+            value = false
+        } else if(value === false){
+            value = true
+        }
+        setOpenCloseEquipements(value)
+    }
+
+    
+
     return (
         <div className='ficheLogement'>
-            <div className='ficheLogement_img'>
-                <img src={logementFinal[0].cover} alt="" />
+            <div className='ficheLogement_gallery'>
+                <img className='ficheLogement_gallery_chevronleft' onClick={() => changeImage(imagesIndex - 1)} src={ChevronLeft} alt='' />
+                <img className='ficheLogement_gallery_img' src={images[imagesIndex]} alt="" />
+                <img className='ficheLogement_gallery_chevronright' onClick={() => changeImage(imagesIndex + 1)} src={ChevronRight} alt='' />
             </div>
             <div className="ficheLogement_mid">
                 <div className='ficheLogement_info'>
@@ -40,24 +78,23 @@ function FicheLogement() {
             </div>
             <div className="ficheLogement_bottom">
                 <div className="ficheLogement_bottom_description">
-                    <div className='ficheLogement_bottom_description_top'>
+                    <div className='ficheLogement_bottom_description_title'>
                         <p>Description</p>
-                        <img className='ficheLogement_bottom_description_top_chevron' src={Chevron} alt="" />
+                        <img className='ficheLogement_bottom_description_title_chevron' onClick={() => menuOpenCloseDescription(openCloseDescription)} src={Chevron} alt="" />
                     </div>
-                    <div className="ficheLogement_bottom_description_text">
+                    {openCloseDescription?<div className="ficheLogement_bottom_description_text">
                         <p>{logementFinal[0].description}</p>
-                    </div>
+                    </div>:null}
                     
                 </div>
                 <div className="ficheLogement_bottom_equipements">
-                    <div className='ficheLogement_bottom_equipements_top'>
+                    <div className='ficheLogement_bottom_equipements_title'>
                         <p>Equipements</p>
-                        <img src={Chevron} alt="" />
+                        <img className='ficheLogement_bottom_equipements_title_chevron' onClick={() => menuOpenCloseEquipements(openCloseEquipements)} src={Chevron} alt="" />
                     </div>
-                    <div className="ficheLogement_bottom_equipements_text">
-                        {/* <p>{logementFinal[0].equipments}</p> */}
+                    {openCloseEquipements?<div className="ficheLogement_bottom_equipements_text">
                         {logementFinal[0].equipments.map(equipment => <p>{equipment}</p>)}
-                    </div>
+                    </div>:null}
                     
                 </div>
             </div>

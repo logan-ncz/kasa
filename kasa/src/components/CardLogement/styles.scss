@@ -6,6 +6,7 @@
     background: #F6F6F6;
     padding: 0.4em;
     border-radius: 10px;
+    margin-bottom: 2em;
 
     .card {
         display: flex;
@@ -17,7 +18,7 @@
         margin: 2em;
         background-size: 100%;
 
-        div {
+        .shadow {
             position: absolute;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
             width: 21em;
@@ -37,8 +38,28 @@
             position: absolute;
             margin: 1em;
             color: #ffffff;
-            max-width: 20%;
+            max-width: 27%;
             z-index: 1;
+        }
+    }
+}
+
+@media (max-width: 415px) {
+    .cardLogement {
+        background: none;
+        margin-bottom: 1em;
+
+        .card {
+            margin: 1em;
+            height: 16em;
+
+            .shadow {
+                height: 16em;
+            }
+
+            p {
+                max-width: 81%;
+            }
         }
     }
 }
