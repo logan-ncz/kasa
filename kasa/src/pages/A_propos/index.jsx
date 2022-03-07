@@ -1,8 +1,21 @@
 import Banner from '../../assets/banner_a_propos.png'
 import Chevron from '../../assets/chevron.svg'
+import Chevron_down from '../../assets/chevron-down.svg'
 import './styles.scss'
+import { useState } from 'react';
 
 export default function About() {
+    const [ openCloseFiabilite , setOpenCloseFiabilite ] = useState(true);
+
+    const menuOpenCloseFiabilite = function(value){
+        if(value === true){
+            value = false
+        } else if(value === false){
+            value = true
+        }
+        setOpenCloseFiabilite(value)
+    }
+
     return (
         <div className='about home'>
             <div className='banner about_banner'>
@@ -14,11 +27,11 @@ export default function About() {
                 <div className="a_propos_fiabilite">
                     <div className='a_propos_fiabilite_top'>
                         <p>Fiabilité</p>
-                        <img className='a_propos_fiabilite_top_chevron' src={Chevron} alt="" />
+                        {openCloseFiabilite?<img className='a_propos_fiabilite_top_chevron' onClick={() => menuOpenCloseFiabilite(openCloseFiabilite)} src={Chevron} alt="" />:<img className='a_propos_fiabilite_top_chevron' onClick={() => menuOpenCloseFiabilite(openCloseFiabilite)} src={Chevron_down} alt="" />}
                     </div>
-                    <div className="a_propos_fiabilite_text">
+                    {openCloseFiabilite?<div className="a_propos_fiabilite_text">
                         <p>Les annonces postées sur Kasa garantissent une fiabilité totale. Les photos sont conformes aux logements, et toutes les informations sont régulièrement vérifiées par nos équipes.</p>
-                    </div>
+                    </div>:null}
                     
                 </div>
                 <div className="a_propos_respect">
