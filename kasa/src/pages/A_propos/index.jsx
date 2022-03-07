@@ -5,15 +5,55 @@ import './styles.scss'
 import { useState } from 'react';
 
 export default function About() {
+
     const [ openCloseFiabilite , setOpenCloseFiabilite ] = useState(true);
 
-    const menuOpenCloseFiabilite = function(value){
-        if(value === true){
-            value = false
-        } else if(value === false){
-            value = true
+    const [ openCloseRespect , setOpenCloseRespect ] = useState(true);
+
+    const [ openCloseService , setOpenCloseService ] = useState(true);
+
+    const [ openCloseSecurite , setOpenCloseSecurite ] = useState(true);
+
+
+    // const [ openClose, setOpenClose ] = useState({
+    //     fiabilite: true,
+    //     respect: true,
+    // });
+
+    const menuOpenCloseFiabilite = function(element){
+        if(element === true){
+            element = false
+        } else if(element === false){
+            element = true
         }
-        setOpenCloseFiabilite(value)
+        setOpenCloseFiabilite(element)
+    }
+
+    const menuOpenCloseRespect = function(element){
+        if(element === true){
+            element = false
+        } else if(element === false){
+            element = true
+        }
+        setOpenCloseRespect(element)
+    }
+
+    const menuOpenCloseService = function(element){
+        if(element === true){
+            element = false
+        } else if(element === false){
+            element = true
+        }
+        setOpenCloseService(element)
+    }
+
+    const menuOpenCloseSecurite = function(element){
+        if(element === true){
+            element = false
+        } else if(element === false){
+            element = true
+        }
+        setOpenCloseSecurite(element)
     }
 
     return (
@@ -37,31 +77,31 @@ export default function About() {
                 <div className="a_propos_respect">
                     <div className='a_propos_respect_top'>
                         <p>Respect</p>
-                        <img src={Chevron} alt="" />
+                        {openCloseRespect?<img className='a_propos_respect_top_chevron' onClick={() => menuOpenCloseRespect(openCloseRespect)} src={Chevron} alt="" />:<img className='a_propos_respect_top_chevron' onClick={() => menuOpenCloseRespect(openCloseRespect)} src={Chevron_down} alt="" />}
                     </div>
-                    <div className="a_propos_respect_text">
+                    {openCloseRespect?<div className="a_propos_respect_text">
                         <p>La bienveillance fait partie des valeurs fondatrices de Kasa. Tout comportement discriminatoire ou de perturbation du voisinage entraînera une exclusion de notre plateforme.</p>
-                    </div>
+                    </div>:null}
                 </div>
                 <div className="a_propos_service">
                     <div className='a_propos_service_top'>
                         <p>Service</p>
-                        <img src={Chevron} alt="" />
+                        {openCloseService?<img className='a_propos_service_top_chevron' onClick={() => menuOpenCloseService(openCloseService)} src={Chevron} alt="" />:<img className='a_propos_service_top_chevron' onClick={() => menuOpenCloseService(openCloseService)} src={Chevron_down} alt="" />}
                     </div>
-                    <div className="a_propos_service_text">
+                    {openCloseService?<div className="a_propos_service_text">
                         <p>Nos équipes se tiennent à votre disposition pour vous fournir une expérience parfaite. N'hésitez pas à nous contacter si vous avez la moindre question.</p>
-                    </div>
+                    </div>:null}
                 </div>
                 <div className="a_propos_securite">
                     <div className='a_propos_securite_top'>
                         <p>Sécurité</p>
-                        <img src={Chevron} alt="" />
+                        {openCloseSecurite?<img className='a_propos_securite_top_chevron' onClick={() => menuOpenCloseSecurite(openCloseSecurite)} src={Chevron} alt="" />:<img className='a_propos_securite_top_chevron' onClick={() => menuOpenCloseSecurite(openCloseSecurite)} src={Chevron_down} alt="" />}
                     </div>
-                    <div className="a_propos_securite_text">
+                    {openCloseSecurite?<div className="a_propos_securite_text">
                         <p>La sécurité est la priorité de Kasa. Aussi bien pour nos hôtes que pour les voyageurs, chaque logement correspond aux critères de sécurité établis par nos services. 
-                            En laissant une note aussi bien à l'hôte qu'au locataire, cela permet à nos équipes de vérifier que les standards sont bien respectés. 
-                            Nous organisons également des ateliers sur la sécurité domestique pour nos hôtes.</p>
-                    </div>
+                        En laissant une note aussi bien à l'hôte qu'au locataire, cela permet à nos équipes de vérifier que les standards sont bien respectés. 
+                        Nous organisons également des ateliers sur la sécurité domestique pour nos hôtes.</p>
+                    </div>:null}
                 </div>
             </div>
         </div>
