@@ -1,16 +1,21 @@
 import { Link } from 'react-router-dom'
 import Logo from '../../assets/logo.png'
 import './styles.scss'
+import { useLocation } from 'react-router-dom'
 
 export default function Header() {
+  const currentRoute = useLocation()
+  console.log(currentRoute)
+
   return (
     <header className='header'>
       <Link to="/">
         <img src={Logo} alt='' />
       </Link>
       <div>
-        <Link to="/">Accueil</Link>
-        <Link to="/a_propos">A Propos</Link>
+        {/* <Link className={currentRoute.pathname = '/'&&'underline'} to="/" >Accueil</Link> */}
+        <Link className={`${currentRoute.pathname === '/' ? "underline" : ""}`} to="/" >Accueil</Link>
+        <Link className={`${currentRoute.pathname === '/a_propos' ? "underline" : ""}`} to="/a_propos">A Propos</Link>
       </div>
     </header>
   )
