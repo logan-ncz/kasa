@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom'
 
 export default function Header() {
   const currentRoute = useLocation()
-  console.log(currentRoute)
 
   return (
     <header className='header'>

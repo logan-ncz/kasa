@@ -60,9 +60,9 @@ function FicheLogement() {
     return (
         <div className='ficheLogement'>
             <div className='ficheLogement_gallery'>
-                <img className='ficheLogement_gallery_chevronleft' onClick={() => changeImage(imagesIndex - 1)} src={ChevronLeft} alt='' />
+                {images.length > 1?<img className='ficheLogement_gallery_chevronleft' onClick={() => changeImage(imagesIndex - 1)} src={ChevronLeft} alt='' />:null}
                 <img className='ficheLogement_gallery_img' src={images[imagesIndex]} alt="" />
-                <img className='ficheLogement_gallery_chevronright' onClick={() => changeImage(imagesIndex + 1)} src={ChevronRight} alt='' />
+                {images.length > 1?<img className='ficheLogement_gallery_chevronright' onClick={() => changeImage(imagesIndex + 1)} src={ChevronRight} alt='' />:null}
             </div>
             <div className="ficheLogement_mid">
                 <div className='ficheLogement_info'>
