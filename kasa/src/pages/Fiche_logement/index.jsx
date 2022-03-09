@@ -23,9 +23,9 @@ function FicheLogement() {
 
     const [ imagesIndex , ChangeIndex ] = useState(0);
 
-    const [ openCloseDescription , setOpenCloseDescription ] = useState(true);
+    const [ openCloseDescription , setOpenCloseDescription ] = useState(false);
 
-    const [ openCloseEquipements , setOpenCloseEquipements ] = useState(true);
+    const [ openCloseEquipements , setOpenCloseEquipements ] = useState(false);
 
     const changeImage = function(indexFunc){
         console.log(images);

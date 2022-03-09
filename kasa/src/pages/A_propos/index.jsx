@@ -6,13 +6,13 @@ import { useState } from 'react';
 
 export default function About() {
 
-    const [ openCloseFiabilite , setOpenCloseFiabilite ] = useState(true);
+    const [ openCloseFiabilite , setOpenCloseFiabilite ] = useState(false);
 
-    const [ openCloseRespect , setOpenCloseRespect ] = useState(true);
+    const [ openCloseRespect , setOpenCloseRespect ] = useState(false);
 
-    const [ openCloseService , setOpenCloseService ] = useState(true);
+    const [ openCloseService , setOpenCloseService ] = useState(false);
 
-    const [ openCloseSecurite , setOpenCloseSecurite ] = useState(true);
+    const [ openCloseSecurite , setOpenCloseSecurite ] = useState(false);
 
 
     // const [ openClose, setOpenClose ] = useState({
