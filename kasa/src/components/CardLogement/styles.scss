@@ -38,7 +38,7 @@
             position: absolute;
             margin: 1em;
             color: #ffffff;
-            max-width: 27%;
+            max-width: 20%;
             z-index: 1;
         }
     }
@@ -61,5 +61,11 @@
                 max-width: 81%;
             }
         }
+    }
+}
+
+@media (min-width: 1800px) {
+    .cardLogement .card p {
+        max-width: 16%;
     }
 }
