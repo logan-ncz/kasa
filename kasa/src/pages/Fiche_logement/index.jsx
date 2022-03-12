@@ -5,12 +5,11 @@ import Rate2 from '../../assets/rate2.svg'
 import Rate3 from '../../assets/rate3.svg'
 import Rate4 from '../../assets/rate4.svg'
 import Rate5 from '../../assets/rate5.svg'
-import Chevron from '../../assets/chevron.svg'
-import Chevron_down from '../../assets/chevron-down.svg'
 import ChevronLeft from '../../assets/chevron-left.svg'
 import ChevronRight from '../../assets/chevron-right.svg'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
+import Collapse from '../../components/Collapse';
 
 
 function FicheLogement() {
@@ -27,8 +26,25 @@ function FicheLogement() {
 
     const [ openCloseEquipements , setOpenCloseEquipements ] = useState(false);
 
+    function menuOpenClose(element, title){
+        if(element === true){
+            element = false
+        } else if(element === false){
+            element = true
+        }
+        switch (title) {
+            case 'description':
+                setOpenCloseDescription(element)
+                break;
+            case 'equipements':
+                setOpenCloseEquipements(element)
+                break;
+            default:
+                return null;
+        }
+    }
+
     const changeImage = function(indexFunc){
-        console.log(images);
         if(indexFunc === -1){
             indexFunc = images.length - 1
         } else if (indexFunc === images.length){
@@ -36,26 +52,6 @@ function FicheLogement() {
         }
         ChangeIndex(indexFunc)
     }
-
-    const menuOpenCloseDescription = function(value){
-        if(value === true){
-            value = false
-        } else if(value === false){
-            value = true
-        }
-        setOpenCloseDescription(value)
-    }
-
-    const menuOpenCloseEquipements = function(value){
-        if(value === true){
-            value = false
-        } else if(value === false){
-            value = true
-        }
-        setOpenCloseEquipements(value)
-    }
-
-    
 
     return (
         <div className='ficheLogement'>
@@ -89,26 +85,13 @@ function FicheLogement() {
                 </div>
             </div>
             <div className="ficheLogement_bottom">
-                <div className="ficheLogement_bottom_description">
-                    <div className='ficheLogement_bottom_description_title'>
-                        <p>Description</p>
-                        {openCloseDescription?<img className='ficheLogement_bottom_description_title_chevron' onClick={() => menuOpenCloseDescription(openCloseDescription)} src={Chevron} alt="" />:<img className='ficheLogement_bottom_description_title_chevron' onClick={() => menuOpenCloseDescription(openCloseDescription)} src={Chevron_down} alt="" />}
-                    </div>
-                    {openCloseDescription?<div className="ficheLogement_bottom_description_text">
-                        <p>{logementFinal[0].description}</p>
-                    </div>:null}
-                    
-                </div>
-                <div className="ficheLogement_bottom_equipements">
-                    <div className='ficheLogement_bottom_equipements_title'>
-                        <p>Equipements</p>
-                        {openCloseEquipements?<img className='ficheLogement_bottom_equipements_title_chevron' onClick={() => menuOpenCloseEquipements(openCloseEquipements)} src={Chevron} alt="" />:<img className='ficheLogement_bottom_equipements_title_chevron' onClick={() => menuOpenCloseEquipements(openCloseEquipements)} src={Chevron_down} alt="" />}
-                    </div>
-                    {openCloseEquipements?<div className="ficheLogement_bottom_equipements_text">
-                        {logementFinal[0].equipments.map(equipment => <p key={equipment}>{equipment}</p>)}
-                    </div>:null}
-                    
-                </div>
+                <Collapse class={'ficheLogement_bottom_description'} title='Description' state={openCloseDescription} function={() => menuOpenClose(openCloseDescription, 'description')}>
+                    <p>{logementFinal[0].description}</p>
+                </Collapse>
+
+                <Collapse class={'ficheLogement_bottom_equipements'} title='Equipements' state={openCloseEquipements} function={() => menuOpenClose(openCloseEquipements, 'equipements')}>
+                    {logementFinal[0].equipments.map(equipment => <p key={equipment}>{equipment}</p>)}
+                </Collapse>
             </div>
             
             

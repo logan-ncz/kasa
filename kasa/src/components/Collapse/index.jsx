@@ -12,12 +12,12 @@ export default function Collapse(props) {
     const classname = props.class
 
     return (
-        <div className={'a_propos_' + classname}>
-            <div className={'a_propos_' + classname + '_top'}>
+        <div className={classname}>
+            <div className={classname + '_top'}>
                 <p>{title}</p>
-                {openClose?<img className={'a_propos_' + classname + '_top_chevron'} onClick={menuOpenClose} src={Chevron} alt="" />:<img className={'a_propos_' + classname + '_top_chevron'} onClick={() => menuOpenClose(openClose, title)} src={Chevron_down} alt="" />}
+                {openClose?<img className={classname + '_top_chevron'} onClick={menuOpenClose} src={Chevron} alt="" />:<img className={classname + '_top_chevron'} onClick={() => menuOpenClose(openClose, title)} src={Chevron_down} alt="" />}
             </div>
-            {openClose?<div className={'a_propos_'+ classname +'_text'}>
+            {openClose?<div className={classname +'_text'}>
                 {props.children}
             </div>:null}
         </div>
