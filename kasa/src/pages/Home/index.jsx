@@ -15,7 +15,7 @@ export default function Home() {
                 <p>Chez vous, partout et ailleurs</p>
             </div>
             <div className='cardLogement'>
-                {logements.map(element => CardLogement(element) )}
+                {logements.map(element => <CardLogement logement={element} key={element.id}/> )}
             </div>
            
             
