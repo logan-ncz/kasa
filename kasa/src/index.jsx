@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header';
 import Home from './pages/Home';
 import About from './pages/A_propos';
@@ -20,7 +20,8 @@ ReactDOM.render(
         <Route exact path='/' element={<Home />}/>
         <Route path='/a_propos' element={<About />}/>
         <Route path='/ficheLogement/:id' element={<FicheLogement />}/>
-        <Route path="*" element={<Error />} />
+        <Route path='/error404' element={<Error />} />
+        <Route path='/*' element={<Navigate to='/error404' />} />
       </Routes>
       <Footer />
     </Router>

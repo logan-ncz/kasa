@@ -17,8 +17,6 @@ export default function Home() {
             <div className='cardLogement'>
                 {logements.map(element => <CardLogement logement={element} key={element.id}/> )}
             </div>
-           
-            
         </div>
     )
 }

@@ -7,24 +7,28 @@ import Rate4 from '../../assets/rate4.svg'
 import Rate5 from '../../assets/rate5.svg'
 import ChevronLeft from '../../assets/chevron-left.svg'
 import ChevronRight from '../../assets/chevron-right.svg'
-import { useParams } from 'react-router-dom'
+import { useParams, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import Collapse from '../../components/Collapse';
 
 
-function FicheLogement() {
-
-    const { id } = useParams()
-
-    const logementFinal = !id ? logements : logements.filter(logement => logement.id === id);
-
-    const images = logementFinal[0].pictures
+export default function FicheLogement() {
 
     const [ imagesIndex , ChangeIndex ] = useState(0);
 
     const [ openCloseDescription , setOpenCloseDescription ] = useState(false);
 
     const [ openCloseEquipements , setOpenCloseEquipements ] = useState(false);
+
+    const { id } = useParams()
+
+    const logementFinal = !id ? logements : logements.filter(logement => logement.id === id);
+
+    if(logementFinal.length === 0){
+        return (<Navigate to='/error404' />)
+    }
+
+    const images = logementFinal[0].pictures
 
     function menuOpenClose(element, title){
         if(element === true){
@@ -51,7 +55,7 @@ function FicheLogement() {
             indexFunc = 0
         }
         ChangeIndex(indexFunc)
-    }
+    }    
 
     return (
         <div className='ficheLogement'>
@@ -81,7 +85,6 @@ function FicheLogement() {
                         {logementFinal[0].rating === "4"?<img className='ficheLogement_host_rating' src={Rate4} alt='' />:null}
                         {logementFinal[0].rating === "5"?<img className='ficheLogement_host_rating' src={Rate5} alt='' />:null}
                     </div>
-                    
                 </div>
             </div>
             <div className="ficheLogement_bottom">
@@ -93,10 +96,6 @@ function FicheLogement() {
                     {logementFinal[0].equipments.map(equipment => <p key={equipment}>{equipment}</p>)}
                 </Collapse>
             </div>
-            
-            
         </div>
     )
 }
-
-export default FicheLogement
